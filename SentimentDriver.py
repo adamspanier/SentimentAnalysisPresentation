@@ -94,9 +94,9 @@ def accum_sent(data):
 		
 def preprocess_Reviews_data(data,name):
     data[name]=data[name].str.lower()
-    data[name]=data[name].apply(lambda x:re.sub(r'\B#\S+','',x))
-    data[name]=data[name].apply(lambda x:re.sub(r"http\S+", "", x))
-    data[name]=data[name].apply(lambda x:' '.join(re.findall(r'\w+', x)))
+    data[name]=data[name].apply(lambda x:re.sub(r'\B#\S+','',str(x)))
+    data[name]=data[name].apply(lambda x:re.sub(r"http\S+", "", str(x)))
+    data[name]=data[name].apply(lambda x:' '.join(re.findall(r'\w+', str(x))))
     data[name]=data[name].apply(lambda x:re.sub(r'\s+', ' ', x, flags=re.I))
     data[name]=data[name].apply(lambda x:re.sub(r'\s+[a-zA-Z]\s+', '', x))
     data[name]=data[name].apply(lambda x:re.sub('@[^\s]+','',x))
